@@ -1,22 +1,23 @@
-;;;; PRELUDE FOR DRUMS AND DIFFERENT CANONS
-;; BASICALLY AN ATTEMPT AT A SHORT (~ 10SEC) FANFARE WITH THE MAIN
-;; INSTRUMENT TYPES INTRODUCED.  IT IS STRUCTURALLY A CANON BETWEEN 
-;; DRUMS (VOICE 1) AND MARIMBAS (VOICE 2).  NO ENDING SHIMMER, AND SOME
-;; ECHO
 
-; AMP ENVELOPES
+;;;; Prelude for Drums and Different Canons
+;; Basically an attempt at a short (~ 10sec) fanfare with the main
+;; instrument types introduced.  It is structurally a canon between 
+;; drums (voice 1) and marimbas (voice 2).  No ending shimmer, and some
+;; echo
+
+; amp envelopes
 f1  0 1024  5     1     1024  .004
 f2  0 1024  5     1     1024  .00012
 
-; WAVEFORMS
+; waveforms
 f3  0 1024  9     10    1     0     16    1.5   0     22    2     0     23    1.5   0 
 f4  0 1024  9     1     1     0   
 
 t0      750  
 
-;i4/5   Start   dur baseamp ampinc  Noise       loc     Timbre
-;i6 Start   dur amp Noise       loc
-;i10    Start   dur Pitch   AmpInc      Bias
+;i4/5	Start	dur	baseamp	ampinc	Noise		loc		Timbre
+;i6	Start	dur	amp	Noise		loc
+;i10	Start	dur	Pitch	AmpInc		Bias
 
 ;; The echo/reverb component
 i99 1  62     1   
@@ -59,38 +60,39 @@ i4  52 22     1000   0      468    0.00   10
 
 ;; The same material, 10 time units later
 i10 11 15     7.70   10800  0.20
-i10 11 15     10.10  0      <    
-i10 14 15     6.74   0      <    
-i10 14 15     10.28  5000   <   
-i10 17 15     5.92   0      <    
-i10 17 15     9.03   0      <    
-i10 21 15     8.53   6800   <   
-i10 22 15     10.09  0      <    
-i10 24 15     7.01   0      <    
-i10 25 15     10.54  0      <    
-i10 27 15     5.19   5000   <   
-i10 28 15     7.27   0      <    
-i10 30 15     9.24   10800  <   
-i10 31 15     8.59   0      <    
-i10 32 15     10.10  0      <    
-i10 35 15     6.99   5000   <   
-i10 35 15     10.53  0      <    
-i10 39 15     5.21   0      <    
-i10 42 15     7.34   6800   <   
-i10 42 15     9.28   0      <    
-i10 43 15     8.54   0      <    
-i10 44 15     10.16  0      <    
-i10 47 15     6.81   5000   <   
-i10 47 15     10.38  0      <    
-i10 50 15     5.64   10800  <   
-i10 52 15     8.44   0      <    
-i10 52 15     9.16   0      <    
-i10 53 15     9.07   0      <    
-i10 54 15     9.44   5000   <   
-i10 56 15     8.75   0      <    
-i10 57 15     9.99   0      <    
-i10 59 15     7.37   6800   <   
-i10 59 15     10.72  0      <    
-i10 62 12     4.68   0      0.00    
-;;i6    57  20  3000    956     0.50
+i10 11 15     10.10  0      <        
+i10 14 15     6.74   0      <        
+i10 14 15     10.28  5000   <     
+i10 17 15     5.92   0      <        
+i10 17 15     9.03   0      <        
+i10 21 15     8.53   6800   <     
+i10 22 15     10.09  0      <        
+i10 24 15     7.01   0      <        
+i10 25 15     10.54  0      <        
+i10 27 15     5.19   5000   <     
+i10 28 15     7.27   0      <        
+i10 30 15     9.24   10800  <	
+i10 31 15     8.59   0      <        
+i10 32 15     10.10  0      <        
+i10 35 15     6.99   5000   <     
+i10 35 15     10.53  0      <        
+i10 39 15     5.21   0      <        
+i10 42 15     7.34   6800   <     
+i10 42 15     9.28   0      <        
+i10 43 15     8.54   0      <        
+i10 44 15     10.16  0      <        
+i10 47 15     6.81   5000   <     
+i10 47 15     10.38  0      <        
+i10 50 15     5.64   10800  <	
+i10 52 15     8.44   0      <        
+i10 52 15     9.16   0      <        
+i10 53 15     9.07   0      <        
+i10 54 15     9.44   5000   <     
+i10 56 15     8.75   0      <        
+i10 57 15     9.99   0      <        
+i10 59 15     7.37   6800   <     
+i10 59 15     10.72  0      <        
+i10 62 12     4.68   0      0.00     
+;;i6	57	20	3000	956		0.50
 e
+

@@ -1,43 +1,43 @@
-;;;; *************** DRUMS AND DIFFERENT CANONS *************
+;;;; *************** Drums and Different Canons *************
 ;;;;
-;;;; ORCHESTRA FILE FOR DISTANT HARMONIES
+;;;; Orchestra file for distant harmonies
 ;;;;
 
   sr        =  44100
-  kr        =  4410
-  ksmps     =  10
-  nchnls    =  2   
+  kr        =  441
+  ksmps     =  100
+  nchnls    =  2
 
   gasnd1    init      0
   gasnd2    init      0
 
-;;;;    Instrument 1:   BASIC DRUM
+;;;;    Instrument 1:   Basic drum
 ;;;;
-;;;;  THIS IS A GLISSANDO VERSION OF THE DRUMS
+;;;;  This is a glissando version of the drums
 
-instr   1,2
-  i2        =  cpsoct(p4)                         ; BASE FREQUENCY    
-  i3        =  cpsoct(p5)                         ; END FREQUENCY
-  k1        line      i2,p3,i3                    ; GLISSANDO FREQUENCY
-  i1        =  1/p3                               ; ONCE PER DURATION - FOR ENVELOPES
-  i6        =  (p6)                               ; THESE THREE ASSIGNMENTS BALANCE THE THREE
-  i4        =  (p6)/3                             ; BRANCHES OF THE DRUM INSTRUMENT
-  i5        =  (p6)/2.1
+instr 1,2
+  i2        =  cpsoct(p4)                         ; Base frequency        
+  i3        =  cpsoct(p5)                         ; end frequency
+  k1        line      i2,p3,i3                    ; glissando frequency
+  i1        =  1/p3                               ; once per duration - for envelopes
+  i6        =  (p6)                               ; these three assignments balance the three
+  i4        =  (p6)/3                             ; branches of the drum instrument
+  i5        =  (p6)/2.1                           ;
 
-                                        ; BRANCH 1 - NOISE
-  a1        oscili    i6,i1,2                     ; GENERATE STEEP EXPONENTIAL ENVELOPE
-  a1        randi     a1,i2/2                     ; GENERATE BAND OF NOISE WITH FREQ. GIVEN BY p5
-  a1        oscili    a1,500,4                    ; USE NOISE BAND FOR AMP INPUT - RING MOD.
+                                ; branch 1 - NOISE
+  a1        oscili    i6,i1,2                     ; generate steep exponential envelope
+  a1        randi     a1,i2/2                     ; generate band of noise with freq. given by p5
+  a1        oscili    a1,500,4                    ; use noise band for amp input - ring mod.
 
-                                        ; BRANCH 2 - INHARM
-  a2        oscili    i4,i1,2                     ; STEEP ENVELOPE WITH LOWER AMPLITUDE THAN a1
-  a2        oscili    a2,i2*.1,3                  ; GENERATE INHARMONIC PARTIALS - 1,1.6,2.2,2.3
+                                ; branch 2 - INHARM
+  a2        oscili    i4,i1,2                     ; steep envelope with lower amplitude than a1
+  a2        oscili    a2,i2*.1,3                  ; generate inharmonic partials - 1,1.6,2.2,2.3
 
-                                        ; BRANCH 3 - FUND
-  a3        oscili    i5,i1,1                     ; DECAY OF f1 IS LESS STEEP THAN f2
-  a3        oscili    a3,k1,4                     ; GENERATES FUNDAMENTAL TONE
+                                ; branch 3 - FUND
+  a3        oscili    i5,i1,1                     ; decay of f1 is less steep than f2
+  a3        oscili    a3,k1,4                     ; generates fundamental tone
 
-                                        ; GLOBAL ENVELOPE TO PREVENT CLICKING
+                                ; global envelope to prevent clicking
   a4        linseg    1,p3-.05,1,.05,0,.01,0
   a5        =  a4*(a1+a2+a3)
 ;;      display a5, p3
@@ -49,15 +49,15 @@ instr   1,2
 endin
 
 instr 80
-; START DUR START   FINAL   AMP LOC
-; p2    p3  p4       p5     p6  p7
-  i1        =  cpsoct(p4)                         ; START FREQUENCY   
-  i2        =  cpsoct(p5)                         ; END FREQUENCY
-  kglis     line      i1,p3,i2                    ; GLISSANDO FREQUENCY
-  k1        expseg    .0001,4.0,p6,p3-4.0,.001    ; ENV
+;Start  dur     start   final   amp     loc
+;p2     p3      p4      p5      p6      p7
+  i1        =  cpsoct(p4)                         ; Start frequency       
+  i2        =  cpsoct(p5)                         ; end frequency
+  kglis     line      i1,p3,i2                    ; glissando frequency
+  k1        expseg    .0001,4.0,p6,p3-4.0,.001    ;env
   k25       linseg    1,4.0,1,p3-4.0,3
   k1        =  k25*k1
-  k10       linseg    2.25,4.0,3,p3-4.0,2         ;POWER TO PARTIALS
+  k10       linseg    2.25,4.0,3,p3-4.0,2         ;power to partials
   a1        gbuzz     k1,kglis,k10,0,35,4
   a2        reson     a1,500,50,1                 ;filt
   a3        reson     a2,1500,100,1               ;filt
@@ -73,32 +73,32 @@ instr 80
 endin
 
 instr 4
-; START DUR BASE    TENOR   AMP LOC
-; p2    p3  p4       p5      p6 p7
-  i2        =  cpsoct(p4)                         ; BASE FREQUENCY    
-  i3        =  cpsoct(p5)                         ; TENOR FREQUENCY
-  i1        =  1/p3                               ; ONCE PER DURATION - FOR ENVELOPES
-  i6        =  (p6)                               ; THESE THREE ASSIGNMENTS BALANCE THE THREE
-  i4        =  (p6)/3                             ; BRANCHES OF THE DRUM INSTRUMENT
-  i5        =  (p6)/2.1    
+;Start  dur     Base    tenor   amp     loc
+;p2     p3      p4      p5      p6      p7
+  i2        =  cpsoct(p4)                         ; Base frequency        
+  i3        =  cpsoct(p5)                         ; Tenor frequency
+  i1        =  1/p3                               ; once per duration - for envelopes
+  i6        =  (p6)                               ; these three assignments balance the three
+  i4        =  (p6)/3                             ; branches of the drum instrument
+  i5        =  (p6)/2.1                           ;
 
-                                    ; BRANCH 1 - NOISE
-  a1        oscili    i6,i1,2                     ; GENERATE STEEP EXPONENTIAL ENVELOPE
-  a1        randi     a1,i2/2                     ; GENERATE BAND OF NOISE WITH FREQ. GIVEN BY p5
-  a1        oscili    a1,500,4                    ; USE NOISE BAND FOR AMP INPUT - RING MOD.
+                                ; branch 1 - NOISE
+  a1        oscili    i6,i1,2                     ; generate steep exponential envelope
+  a1        randi     a1,i2/2                     ; generate band of noise with freq. given by p5
+  a1        oscili    a1,500,4                    ; use noise band for amp input - ring mod.
 
-                                    ; BRANCH 2 - INHARM
-  a2        oscili    i4,i1,2                     ; STEEP ENVELOPE WITH LOWER AMPLITUDE THAN a1
-  a2        oscili    a2,i2*.1,3                  ; GENERATE INHARMONIC PARTIALS - 1,1.6,2.2,2.3
+                                ; branch 2 - INHARM
+  a2        oscili    i4,i1,2                     ; steep envelope with lower amplitude than a1
+  a2        oscili    a2,i2*.1,3                  ; generate inharmonic partials - 1,1.6,2.2,2.3
 
-                                    ; BRANCH 3 - FUND
-  a3        oscili    i5,i1,1                     ; DECAY OF F1 IS LESS STEEP THAN f2
-  a3        oscili    a3,i3,4                     ; GENERATES FUNDAMENTAL TONE
+                                ; branch 3 - FUND
+  a3        oscili    i5,i1,1                     ; decay of f1 is less steep than f2
+  a3        oscili    a3,i3,4                     ; generates fundamental tone
 
-  a8        oscili    i5,i1,1                     ; DECAY OF F1 IS LESS STEEP THAN f2
-  a8        oscili    a3,i2,4                     ; GENERATES FUNDAMENTAL TONE
+  a8        oscili    i5,i1,1                     ; decay of f1 is less steep than f2
+  a8        oscili    a3,i2,4                     ; generates fundamental tone
 
-                                    ; GLOBAL ENVELOPE TO PREVENT CLICKING
+                                ; global envelope to prevent clicking
   a4        linseg    1,p3-.05,1,.05,0,.01,0
   a5        =  a4*(a1+a2+a3)
   a6        =  a5*p7
@@ -114,4 +114,5 @@ instr   99
             outs      asig1, asig2
   gasnd     =  0
 endin
+
 
